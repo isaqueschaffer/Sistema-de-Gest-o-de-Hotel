@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciar Hóspedes</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Gerenciar Hóspedes</h1>
+    <a href="index.html">Voltar ao Menu</a>
+  </header>
+  <main>
+    <section>
+      <h2>Adicionar Hóspede</h2>
+      <form id="formHospede">
+  <input type="text" id="nome" placeholder="Nome" required>
+ <input type="text" id="cpfCnpj" placeholder="CPF ou CNPJ" required>
+  <input type="text" id="telefone" placeholder="Telefone" required>
+  <input type="text" id="endereco" placeholder="Endereço">
+  <button type="submit">Salvar Hóspede</button>
+</form>
+
+    </section>
+    <section>
+      <h2>Lista de Hóspedes</h2>
+      <table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>CPF/CNPJ</th>
+      <th>Telefone</th>
+      <th>Endereço</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody id="hospedesTabela">
+      <!-- Dados dinâmicos -->
+  </tbody>
+</table>
+
+    </section>
+  </main>
+  <script src="js/hospedes.js"></script>
+</body>
+</html>

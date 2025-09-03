@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciar Quartos</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Gerenciar Quartos</h1>
+    <a href="index.html">Voltar ao Menu</a>
+  </header>
+
+  <main>
+    <!-- Formulário de cadastro/edição -->
+    <section>
+      <h2>Adicionar/Editar Quarto</h2>
+      <form id="formQuarto">
+        <input type="hidden" id="quartoId">
+        <input type="number" id="numero" placeholder="Número do Quarto" required>
+        <select id="tipo" required>
+          <option value="">Selecione o tipo</option>
+          <option value="Simples">Quarto Simples</option>
+          <option value="Apartamento">Apartamento</option>
+        </select>
+        <input type="number" id="quantidadeCamas" placeholder="Quantidade de camas" required>
+        <input type="text" id="tipoCamas" placeholder="Tipo de camas" required>
+        <label><input type="checkbox" id="tv"> TV</label>
+        <label><input type="checkbox" id="frigobar"> Frigobar</label>
+        <label><input type="checkbox" id="banheiroPrivativo"> Banheiro Privativo</label>
+       
+        <button type="submit">Salvar Quarto</button>
+      </form>
+    </section>
+
+    <!-- Tabela de quartos -->
+    <section>
+      <h2>Lista de Quartos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>Qtd. Camas</th>
+            <th>Tipo Camas</th>
+            <th>TV</th>
+            <th>Frigobar</th>
+            <th>Banheiro</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="quartosTabela"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/quartos.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciar Hospedagens</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Gerenciar Hospedagens</h1>
+    <a href="index.html">Voltar ao Menu</a>
+  </header>
+
+  <main>
+    <!-- Formulário de cadastro/edição -->
+    <section>
+      <h2>Adicionar/Editar Hospedagem</h2>
+      <form id="formHospedagem">
+  <input type="hidden" id="hospedagemId" name="hospedagemId">
+
+  <label>Hóspede:
+    <select id="hospedeId" required></select>
+  </label>
+
+  <label>Quarto:
+    <select id="quartoId" required></select>
+  </label>
+
+  <label>Status:
+    <select id="status" required>
+      <option value="Livre">Livre</option>
+      <option value="Ocupado">Ocupado</option>
+      <option value="Manutenção">Manutenção</option>
+    </select>
+  </label>
+
+  <label>Data de Entrada:
+    <input type="datetime-local" id="dataEntrada" required>
+  </label>
+
+  <label>Data de Saída:
+    <input type="datetime-local" id="dataSaida" required>
+  </label>
+
+  <label>Tipo de Hospedagem:
+    <select id="tipoHospedagem" required>
+      <option value="Diária">Diária</option>
+      <option value="Empresa">Empresa</option>
+    </select>
+  </label>
+
+  <label>Valor Total:
+    <input type="number" id="valorTotal" step="0.01" required>
+  </label>
+
+  <!-- Botões separados -->
+  <button type="button" id="btnSalvar">Salvar Hospedagem</button>
+  <button type="button" id="btnAtualizar" style="display:none;" disabled>Atualizar Hospedagem</button>
+</form>
+
+    </section>
+
+    <!-- Tabela de hospedagens -->
+    <section>
+      <h2>Lista de Hospedagens</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Hóspede</th>
+            <th>Quarto</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="hospedagensTabela"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/hospedagem.js"></script>
+</body>
+</html>
