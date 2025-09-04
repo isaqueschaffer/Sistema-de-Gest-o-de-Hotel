@@ -47,6 +47,7 @@ function listarHospedagens() {
             <td>${h.tipoHospedagem}</td>
             <td>${h.valorTotal},00 R$</td>
             <td>${h.quarto ? h.quarto.status : ''}</td>
+            <td>${h.status? h.status: ''}</td>
             <td>
               <button onclick="editarHospedagem(${h.id})">Editar</button>
               <button onclick="excluirHospedagem(${h.id})">Excluir</button>
@@ -72,11 +73,7 @@ function criarHospedagem(hospedagem, status, quartoId) {
     .then(res => {
       if (!res.ok) throw new Error("Erro ao criar hospedagem");
       // Atualiza status do quarto
-      return fetch(API_QUARTOS + "/" + quartoId + "/status", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: status })
-      });
+      return fetch(API_QUARTOS + "/" + quartoId + "/status", {method: "PATCH", headers: { "Content-Type": "application/json" },body: JSON.stringify({ status: status })});
     });
 }
 
@@ -119,6 +116,7 @@ function editarHospedagem(id) {
       document.getElementById("valorTotal").value = h.valorTotal;
       document.getElementById("status").value = h.quarto.status;
       document.getElementById("btnAtualizar").disabled = false;
+      document.getElementById("Statushospedagem").value= h.status; 
     });
     document.getElementById("btnAtualizar").style.display = "inline-block"; // ou "block"
     document.getElementById("btnSalvar").style.display = "none";
@@ -148,7 +146,8 @@ function salvarHospedagem() {
     dataEntrada: document.getElementById("dataEntrada").value,
     dataSaida: document.getElementById("dataSaida").value,
     tipoHospedagem: document.getElementById("tipoHospedagem").value,
-    valorTotal: parseFloat(document.getElementById("valorTotal").value)
+    valorTotal: parseFloat(document.getElementById("valorTotal").value),
+    status: document.getElementById("Statushospedagem").value
   };
 
   criarHospedagem(hospedagem, status, quartoId)
@@ -180,6 +179,7 @@ function atualizarDadosHospedagem() {
     dataSaida: document.getElementById("dataSaida").value,
     tipoHospedagem: document.getElementById("tipoHospedagem").value,
     valorTotal: parseFloat(document.getElementById("valorTotal").value)
+    ,status: document.getElementById("Statushospedagem").value
   };
 
   atualizarHospedagem(id, hospedagem, status, quartoId)
