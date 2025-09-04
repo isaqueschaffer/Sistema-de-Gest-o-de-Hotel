@@ -23,6 +23,7 @@ public class Hospedagem {
     private LocalDateTime dataSaida;
     private String tipoHospedagem; // Diária, Empresa
     private Double valorTotal;
+    private String status; // Ativa, Finalizada
 
     // Getters e Setters
     // ...
