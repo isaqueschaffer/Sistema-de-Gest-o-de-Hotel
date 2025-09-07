@@ -37,6 +37,8 @@ function listarHospedagens() {
       const tabela = document.getElementById("hospedagensTabela");
       tabela.innerHTML = "";
       data.forEach(h => {
+
+        if(h.status == "Pendente" ) {
         const row = `
           <tr>
             <td>${h.id}</td>
@@ -55,6 +57,7 @@ function listarHospedagens() {
           </tr>
         `;
         tabela.innerHTML += row;
+        }
       });
     });
 }
