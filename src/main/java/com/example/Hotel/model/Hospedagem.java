@@ -13,11 +13,11 @@ public class Hospedagem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Hospede hospede;
+    @ManyToOne(fetch = FetchType.EAGER)
+private Hospede hospede;
 
-    @ManyToOne
-    private Quarto quarto;
+@ManyToOne(fetch = FetchType.EAGER)
+private Quarto quarto;
 
     private LocalDateTime dataEntrada;
     private LocalDateTime dataSaida;

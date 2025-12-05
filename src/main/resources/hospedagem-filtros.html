@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtros de Hospedagens</title>
+  <link rel="stylesheet" href="/Hotel/src/main/resources/css/hospedagem-filtros.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Pesquisar Hospedagens</h1>
+    
+    <!-- Filtros -->
+    <form id="filtrosForm" class="filtros">
+      <div>
+        <label for="dataInicio">Data Início:</label>
+        <input type="date" id="dataInicio" name="dataInicio">
+      </div>
+
+      <div>
+        <label for="dataFim">Data Fim:</label>
+        <input type="date" id="dataFim" name="dataFim">
+      </div>
+
+      <div>
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+          <option value="">Todos</option>
+          <option value="Paga">Paga</option>
+          <option value="Pendente">Pendente</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" placeholder="Nome do cliente">
+      </div>
+
+      <div>
+        <label for="quarto">Quarto:</label>
+        <input type="number" id="quarto" name="quarto" placeholder="Número do quarto">
+      </div>
+
+      <button type="submit">Pesquisar</button>
+    </form>
+
+    <!-- Resultados -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Quarto</th>
+          <th>Entrada</th>
+          <th>Saída</th>
+          <th>Status</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaResultados"></tbody>
+    </table>
+  </div>
+
+  <script src="js/hospedagem-filtros.js"></script>
+</body>
+</html>

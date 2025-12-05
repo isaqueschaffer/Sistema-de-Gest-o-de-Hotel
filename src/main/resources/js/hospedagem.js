@@ -35,32 +35,51 @@ function listarHospedagens() {
     .then(res => res.json())
     .then(data => {
       const tabela = document.getElementById("hospedagensTabela");
-      tabela.innerHTML = "";
+      tabela.innerHTML = ""; // limpa tabela
+      
       data.forEach(h => {
-
-        if(h.status == "Pendente" ) {
-        const row = `
-          <tr>
-            <td>${h.id}</td>
-            <td>${h.hospede ? h.hospede.nome : ''}</td>
-            <td>${h.quarto ? h.quarto.numero : ''}</td>
-            <td>${h.dataEntrada ? h.dataEntrada.replace('T', ' ') : ''}</td>
-            <td>${h.dataSaida ? h.dataSaida.replace('T', ' ') : ''}</td>
-            <td>${h.tipoHospedagem}</td>
-            <td>${h.valorTotal},00 R$</td>
-            <td>${h.quarto ? h.quarto.status : ''}</td>
-            <td>${h.status? h.status: ''}</td>
-            <td>
-              <button onclick="editarHospedagem(${h.id})">Editar</button>
-              <button onclick="excluirHospedagem(${h.id})">Excluir</button>
-            </td>
-          </tr>
+        // Cria um <tr> vazio
+        
+if(h.status==="Pendente" || h.status==="Paga"){ 
+  const tr = document.createElement("tr");
+        // Preenche o <tr> com as células
+        tr.innerHTML = `
+          <td>${h.id}</td>
+          <td>${h.hospede ? h.hospede.nome : ''}</td>
+          <td>${h.quarto ? h.quarto.numero : ''}</td>
+          <td>${h.dataEntrada ? h.dataEntrada.replace('T', ' ') : ''}</td>
+          <td>${h.dataSaida ? h.dataSaida.replace('T', ' ') : ''}</td>
+          <td>${h.tipoHospedagem}</td>
+          <td>${h.valorTotal},00 R$</td>
+          <td>${h.quarto ? h.quarto.status : ''}</td>
+          <td class="stthosp">${h.status ? h.status : ''}</td>
+          <td>
+            <button onclick="editarHospedagem(${h.id})">Editar</button>
+            <button onclick="excluirHospedagem(${h.id})">Excluir</button>
+          </td>
         `;
-        tabela.innerHTML += row;
+
+        // Seleciona o <td> do status dentro dessa linha
+        const statusTd = tr.querySelector(".stthosp");
+
+        if (h.status === "Pendente") {
+          statusTd.style.backgroundColor = "#f700044d";
+          statusTd.style.color = "white";
+        } else if (h.status === "Paga") {
+          statusTd.style.backgroundColor = "#98f7004d";
+          statusTd.style.color = "black";
+        } else {
+          statusTd.style.backgroundColor = ""; // cor padrão
         }
+
+        // Adiciona a linha na tabela
+        tabela.appendChild(tr);
+      }
+        
       });
     });
 }
+
 
 // =========================
 // CRUD
@@ -174,8 +193,21 @@ function atualizarDadosHospedagem() {
 
   const quartoId = document.getElementById("quartoId").value;
   const status = document.getElementById("status").value;
+  const statushospedagem=document.getElementById("Statushospedagem").value;
 
-  const hospedagem = {
+  const valorTotal = document.getElementById("valorTotal").value;
+
+if (valorTotal === "" || valorTotal === null) {
+    alert("Preencha o campo Valor Total.");
+    return;
+}
+
+
+if(status==="Ocupado" && statushospedagem ==="Finalizada" ){
+ alert("Precisa deixar o status do quarto para 'Livre' ao finalizar a hospedagem!");
+
+}else{
+   const hospedagem = {
     hospede: { id: document.getElementById("hospedeId").value },
     quarto: { id: quartoId },
     dataEntrada: document.getElementById("dataEntrada").value,
@@ -200,6 +232,12 @@ function atualizarDadosHospedagem() {
      alert("hospedagem atualizada com sucesso!");
     document.getElementById("btnAtualizar").style.display = "none";
     document.getElementById("btnSalvar").style.display = "inline-block";
+
+}
+
+
+
+ 
 }
 
 // =========================

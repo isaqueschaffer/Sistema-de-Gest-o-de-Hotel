@@ -62,4 +62,49 @@ function excluirHospede(id) {
     .catch(err => console.error("Erro ao excluir hóspede:", err));
 }
 
+function editarHospede(id) {
+  fetch(`${API_URL}/${id}`)
+    .then(res => res.json())
+    .then(h => {
+
+      document.getElementById("editId").value = h.id;
+      document.getElementById("editNome").value = h.nome;
+      document.getElementById("editCpfCnpj").value = h.cpfCnpj;
+      document.getElementById("editTelefone").value = h.telefone;
+      document.getElementById("editEndereco").value = h.endereco;
+
+      document.getElementById("modal").style.display = "flex";
+    });
+}
+
+function fecharModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+function salvarEdicao() {
+
+  const hospede = {
+    id: document.getElementById("editId").value,
+    nome: document.getElementById("editNome").value,
+    cpfCnpj: document.getElementById("editCpfCnpj").value,
+    telefone: document.getElementById("editTelefone").value,
+    endereco: document.getElementById("editEndereco").value
+  };
+
+  fetch(`${API_URL}/${hospede.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(hospede)
+  })
+    .then(res => {
+      if (res.ok) {
+        fecharModal();
+        listarHospedes();
+      } else {
+        alert("Erro ao editar hóspede.");
+      }
+    });
+}
+
+
 listarHospedes();

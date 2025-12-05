@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.filtros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filtros div {
+  display: flex;
+  flex-direction: column;
+}
+
+.filtros label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filtros input, .filtros select, .filtros button {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.filtros button {
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.filtros button:hover {
+  background: #0056b3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table th {
+  background: #007bff;
+  color: white;
+}
+
+.status-Ativa {
+  color: green;
+  font-weight: bold;
+}
+
+.status-Finalizada {
+  color: red;
+  font-weight: bold;
+}

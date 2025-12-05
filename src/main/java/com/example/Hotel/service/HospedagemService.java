@@ -13,9 +13,7 @@ public class HospedagemService {
     @Autowired
     private HospedagemRepository hospedagemRepository;
 
-    public List<Hospedagem> listarTodos() {
-        return hospedagemRepository.findAll();
-    }
+
 
     public Optional<Hospedagem> buscarPorId(Long id) {
         return hospedagemRepository.findById(id);
@@ -33,4 +31,9 @@ public class HospedagemService {
     public Optional<Hospedagem> findByQuartoId(Long quartoId) {
         return hospedagemRepository.findByQuartoId(quartoId);
     }
+
+
+    public List<Hospedagem> listarTodos() {
+    return hospedagemRepository.findAllWithRelations();
+}
 }
