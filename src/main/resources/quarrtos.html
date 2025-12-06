@@ -88,7 +88,7 @@
   </style>
 </head>
 <body>
-  <a id="voltar" href="/Hotel/src/main/resources/index.html">Voltar</a>
+  <a id="voltar" href="index.html">Voltar</a>
   <h1>Status dos Quartos</h1>
   <div class="container">
     <div class="coluna">
@@ -201,7 +201,7 @@
       };
 
       fetch(`${API_HOSPEDAGENS}/${id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(hospedagem)
       })

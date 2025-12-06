@@ -36,4 +36,10 @@ public class HospedagemService {
     public List<Hospedagem> listarTodos() {
     return hospedagemRepository.findAllWithRelations();
 }
+
+
+public Optional<Hospedagem> findByQuartoIdAndStatusNot(Long quartoId) { 
+
+    return hospedagemRepository.findByQuartoIdAndStatusNot(quartoId, "Finalizada");
+}
 }

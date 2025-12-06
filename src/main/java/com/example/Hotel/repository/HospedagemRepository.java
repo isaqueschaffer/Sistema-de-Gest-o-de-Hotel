@@ -18,4 +18,8 @@ Optional<Hospedagem> findByQuartoId(Long quartoId);
            "JOIN FETCH h.quarto")
     List<Hospedagem> findAllWithRelations();
 
+
+    Optional<Hospedagem> findByQuartoIdAndStatusNot(Long quartoId, String status);
+
+
 }

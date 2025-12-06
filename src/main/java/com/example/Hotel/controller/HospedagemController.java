@@ -30,7 +30,8 @@ public class HospedagemController {
      // Buscar hospedagem pelo quarto
     @GetMapping("/quarto/{quartoId}")
     public ResponseEntity<Hospedagem> getByQuartoId(@PathVariable Long quartoId) {
-        Optional<Hospedagem> hospedagem = hospedagemService.findByQuartoId(quartoId);
+
+        Optional<Hospedagem> hospedagem = hospedagemService.findByQuartoIdAndStatusNot(quartoId);
         return hospedagem.map(ResponseEntity::ok)
                          .orElse(ResponseEntity.notFound().build());
     }
