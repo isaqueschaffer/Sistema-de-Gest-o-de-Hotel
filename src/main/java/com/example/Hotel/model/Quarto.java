@@ -40,6 +40,14 @@ public class Quarto {
     @Column(nullable = false)
     private Boolean tv;
 
+     @NotNull
+    @Column(nullable = false)
+    private Boolean ar;
+
+     @NotNull
+    @Column(nullable = false)
+    private Boolean ventilador;
+
     @NotNull
     @Column(nullable = false)
     private Boolean frigobar;

@@ -16,6 +16,8 @@ function listarQuartos() {
             <td>${q.quantidadeCamas}</td>
             <td>${q.tipoCamas}</td>
             <td>${q.tv ? "Sim" : "Não"}</td>
+            <td>${q.ar ? "Sim" : "Não"}</td>
+            <td>${q.ventilador ? "Sim" : "Não"}</td>
             <td>${q.frigobar ? "Sim" : "Não"}</td>
             <td>${q.banheiroPrivativo ? "Sim" : "Não"}</td>
             
@@ -41,6 +43,8 @@ document.getElementById("formQuarto").addEventListener("submit", e => {
     quantidadeCamas: document.getElementById("quantidadeCamas").value,
     tipoCamas: document.getElementById("tipoCamas").value,
     tv: document.getElementById("tv").checked,
+    ar: document.getElementById("ar").checked,
+    ventilador: document.getElementById("ventilador").checked,
     frigobar: document.getElementById("frigobar").checked,
     banheiroPrivativo: document.getElementById("banheiroPrivativo").checked,
     status: "Livre"
@@ -87,6 +91,8 @@ function editarQuarto(id) {
       document.getElementById("quantidadeCamas").value = q.quantidadeCamas;
       document.getElementById("tipoCamas").value = q.tipoCamas;
       document.getElementById("tv").checked = q.tv;
+      document.getElementById("ar").checked = q.ar;
+      document.getElementById("ventilador").checked = q.ventilador;
       document.getElementById("frigobar").checked = q.frigobar;
       document.getElementById("banheiroPrivativo").checked = q.banheiroPrivativo;
      

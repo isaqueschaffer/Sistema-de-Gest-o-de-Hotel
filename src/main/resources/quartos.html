@@ -25,9 +25,14 @@
         </select>
         <input type="number" id="quantidadeCamas" placeholder="Quantidade de camas" required>
         <input type="text" id="tipoCamas" placeholder="Tipo de camas" required>
-        <label><input type="checkbox" id="tv"> TV</label>
-        <label><input type="checkbox" id="frigobar"> Frigobar</label>
-        <label><input type="checkbox" id="banheiroPrivativo"> Banheiro Privativo</label>
+        <div class="check">
+  <label class="check-item"><input type="checkbox" id="tv"> TV</label>
+  <label class="check-item"><input type="checkbox" id="ar"> Ar</label>
+  <label class="check-item"><input type="checkbox" id="ventilador"> Ventilador</label>
+  <label class="check-item"><input type="checkbox" id="frigobar"> Frigobar</label>
+  <label class="check-item"><input type="checkbox" id="banheiroPrivativo"> Banheiro</label>
+</div>
+
        
         <button type="submit">Salvar Quarto</button>
       </form>
@@ -45,6 +50,8 @@
             <th>Qtd. Camas</th>
             <th>Tipo Camas</th>
             <th>TV</th>
+            <th>Ar</th>
+            <th>Ventilador</th>
             <th>Frigobar</th>
             <th>Banheiro</th>
             <th>Ações</th>
