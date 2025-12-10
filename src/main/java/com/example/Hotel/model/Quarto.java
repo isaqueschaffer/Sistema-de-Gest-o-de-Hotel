@@ -2,7 +2,7 @@ package com.example.Hotel.model;
 
 import jakarta.persistence.*;
 
-import org.antlr.v4.runtime.misc.NotNull;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,6 @@ public class Quarto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @Column(nullable = false, unique = true) // Também reforça a unicidade aqui
     private Integer numero;
 
@@ -28,7 +27,7 @@ public class Quarto {
     @Column(nullable = false)
     private String tipo; // Simples ou Apartamento
 
-    @NotNull
+  
     @Column(nullable = false)
     private Integer quantidadeCamas;
 
@@ -36,23 +35,22 @@ public class Quarto {
     @Column(nullable = false)
     private String tipoCamas;
 
-    @NotNull
+  
     @Column(nullable = false)
     private Boolean tv;
 
-     @NotNull
     @Column(nullable = false)
     private Boolean ar;
 
-     @NotNull
+   
     @Column(nullable = false)
     private Boolean ventilador;
 
-    @NotNull
+    
     @Column(nullable = false)
     private Boolean frigobar;
 
-    @NotNull
+    
     @Column(nullable = false)
     private Boolean banheiroPrivativo;
 

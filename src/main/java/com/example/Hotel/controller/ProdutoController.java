@@ -48,4 +48,27 @@ public class ProdutoController {
         produtoService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+
+    @GetMapping("/codigo/{codigoProduto}")
+    public ResponseEntity<Produto> buscarPorCodigoProduto(@PathVariable Long codigoProduto) {
+        Optional<Produto> produto = produtoService.buscarPorCodigoProduto(codigoProduto);
+        return produto.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/totalPrecoProdutos")
+    public Double calcularPrecoTotal() {
+        return produtoService.calcularPrecoTotal();
+    }
+
+    @GetMapping("/totalPrecoProdutos/codigo/{codigo}")
+    public Double calcularPrecoTotalPorCodigo(@PathVariable Long codigo) {
+        return produtoService.calcularPrecoTotalPorCodigo(codigo);
+    }   
+
+    @GetMapping("/totalPrecoProdutos/nome/{nome}")
+    public Double calcularPrecoTotalPorNome(@PathVariable String nome) {
+        return produtoService.calcularPrecoTotalPorNome(nome);
+    }   
+    
 }

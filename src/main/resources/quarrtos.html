@@ -169,49 +169,58 @@
         .catch(err => console.error("Erro ao carregar quartos:", err));
     }
 
-    function abrirHospedagem(quartoId) {
-      fetch(`${API_HOSPEDAGENS}/quarto/${quartoId}`)
-        .then(res => res.json())
-        .then(h => {
-          // Preenche modal
-          document.getElementById("hospedagemId").value = h.id;
-          document.getElementById("quartoId").value = h.quarto.id;
-          document.getElementById("hospedeNome").value = h.hospede.nome;
-          document.getElementById("dataEntrada").value = h.dataEntrada;
-          document.getElementById("dataSaida").value = h.dataSaida;
-          document.getElementById("tipoHospedagem").value = h.tipoHospedagem;
-          document.getElementById("valorTotal").value = h.valorTotal;
+    let hospedeIdGlobal = null;
 
-          document.getElementById("modalHospedagem").style.display = "flex";
-        })
-        .catch(err => alert("Não foi possível carregar hospedagem deste quarto."));
-    }
+function abrirHospedagem(quartoId) {
+  fetch(`${API_HOSPEDAGENS}/quarto/${quartoId}`)
+    .then(res => res.json())
+    .then(h => {
+
+      hospedeIdGlobal = h.hospede.id; // ← SALVA O ID AQUI
+      Statusglob = h.status;
+
+      document.getElementById("hospedagemId").value = h.id;
+      document.getElementById("quartoId").value = h.quarto.id;
+      document.getElementById("hospedeNome").value = h.hospede.nome;
+      document.getElementById("dataEntrada").value = h.dataEntrada;
+      document.getElementById("dataSaida").value = h.dataSaida;
+      document.getElementById("tipoHospedagem").value = h.tipoHospedagem;
+      document.getElementById("valorTotal").value = h.valorTotal;
+
+      document.getElementById("modalHospedagem").style.display = "flex";
+    })
+    .catch(err => alert("Não foi possível carregar hospedagem deste quarto."));
+}
+
 
     function salvarAtualizacao() {
-      const id = document.getElementById("hospedagemId").value;
-      const quartoId = document.getElementById("quartoId").value;
+  const id = document.getElementById("hospedagemId").value;
+  const quartoId = document.getElementById("quartoId").value;
 
-      const hospedagem = {
-        id: id,
-        quarto: { id: quartoId },
-        dataEntrada: document.getElementById("dataEntrada").value,
-        dataSaida: document.getElementById("dataSaida").value,
-        tipoHospedagem: document.getElementById("tipoHospedagem").value,
-        valorTotal: parseFloat(document.getElementById("valorTotal").value)
-      };
+  const hospedagem = {
+    id: id,
+    quarto: { id: quartoId },
+    hospede: { id: hospedeIdGlobal }, // ← você precisa guardar esse ID
+    dataEntrada: document.getElementById("dataEntrada").value,
+    dataSaida: document.getElementById("dataSaida").value,
+    tipoHospedagem: document.getElementById("tipoHospedagem").value,
+    valorTotal: parseFloat(document.getElementById("valorTotal").value),
+    status: Statusglob
+  };
 
-      fetch(`${API_HOSPEDAGENS}/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(hospedagem)
-      })
-      .then(res => {
-        if (!res.ok) throw new Error("Erro ao atualizar hospedagem");
-        fecharModal();
-        carregarQuartos();
-      })
-      .catch(err => alert("Erro ao salvar: " + err.message));
-    }
+  fetch(`${API_HOSPEDAGENS}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(hospedagem)
+  })
+  .then(res => {
+    if (!res.ok) throw new Error("Erro ao atualizar hospedagem");
+    fecharModal();
+    carregarQuartos();
+  })
+  .catch(err => alert("Erro ao salvar: " + err.message));
+}
+
 
     function fecharModal() {
       document.getElementById("modalHospedagem").style.display = "none";

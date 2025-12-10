@@ -8,15 +8,21 @@ import lombok.Setter;
 @Setter
 
 @Entity
+
 public class Hospede {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
+    @Column(unique = true, nullable = false)
     private String cpfCnpj;
+
     private String telefone;
     private String endereco;
 
-    // Getters e Setters
-    // ...
+    // getters e setters
 }
+

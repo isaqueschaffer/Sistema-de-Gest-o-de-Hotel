@@ -118,7 +118,7 @@ function atualizarHospedagem(id, hospedagem, status, quartoId) {
 }
 
 // Excluir hospedagem
-function excluirHospedagem(id) {
+function excluirHospedagem(id) { 
   fetch(API_URL + "/" + id, { method: "DELETE" })
     .then(res => { if (res.ok) listarHospedagens(); })
     .catch(err => console.error(err));

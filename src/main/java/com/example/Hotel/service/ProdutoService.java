@@ -28,4 +28,22 @@ public class ProdutoService {
     public void deletar(Long id) {
         produtoRepository.deleteById(id);
     }
+
+    public Optional<Produto> buscarPorCodigoProduto(long codigoProduto) {
+        return produtoRepository.findBycodigoProduto(codigoProduto);
+    }   
+
+
+    public Double calcularPrecoTotal() {
+        return produtoRepository.calcularValorTotalEstoque();
+    }
+
+    public Double calcularPrecoTotalPorCodigo(Long codigo) {
+        return produtoRepository.calcularTotalPorCodigo(codigo);
+    }   
+
+    public Double calcularPrecoTotalPorNome(String nome) {
+        return produtoRepository.calcularTotalPorNome(nome);
+    }       
+
 }

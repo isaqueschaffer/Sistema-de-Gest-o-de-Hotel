@@ -14,7 +14,9 @@ public class Produto {
     private Long id;
     private String nome;
     private Double precoUnitario;
+    private Long codigoProduto;
+    private String descricao;
+    private long quantidade;
 
-    // Getters e Setters
-    // ...
+    
 }
