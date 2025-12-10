@@ -362,3 +362,29 @@ h2 {
         font-size: 14px;
     }
 }
+
+
+.btn-voltar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4A90E2;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    margin-bottom: 40px;
+}
+
+.btn-voltar:hover {
+    background-color: #357ABD;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.20);
+}
+
+.btn-voltar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.10);
+}
