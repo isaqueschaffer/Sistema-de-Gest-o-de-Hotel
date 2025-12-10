@@ -1,7 +1,13 @@
 package com.example.Hotel.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
+
+@Getter
+@Setter
 
 @Entity
 public class Caixa {
@@ -13,44 +19,10 @@ public class Caixa {
     private Double totalSaidas;
     private Double saldoFinal;
 
-    public Long getId() {
-        return id;
+    
+    public void calcularSaldoFinal() {
+        if (totalEntradas == null) totalEntradas = 0.0;
+        if (totalSaidas == null) totalSaidas = 0.0;
+        this.saldoFinal = totalEntradas - totalSaidas;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
-
-    public Double getTotalEntradas() {
-        return totalEntradas;
-    }
-
-    public void setTotalEntradas(Double totalEntradas) {
-        this.totalEntradas = totalEntradas;
-    }
-
-    public Double getTotalSaidas() {
-        return totalSaidas;
-    }
-
-    public void setTotalSaidas(Double totalSaidas) {
-        this.totalSaidas = totalSaidas;
-    }
-
-    public Double getSaldoFinal() {
-        return saldoFinal;
-    }
-
-    public void setSaldoFinal(Double saldoFinal) {
-        this.saldoFinal = saldoFinal;
-    }
-    // ...
 }

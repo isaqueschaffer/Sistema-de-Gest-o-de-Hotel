@@ -36,6 +36,31 @@ function listarHospedagens() {
     .then(data => {
       const tabela = document.getElementById("hospedagensTabela");
       tabela.innerHTML = ""; // limpa tabela
+
+//função para formatar data no padrão brasileiro
+      function formatarDataBrasil(dataISO) {
+  if (!dataISO) return "";
+
+  const data = new Date(dataISO);
+  return data.toLocaleString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+//função para formatar valor em real brasileiro
+function formatarReal(valor) {
+  if (valor == null) return "";
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
+
+
       
       data.forEach(h => {
         // Cria um <tr> vazio
@@ -46,13 +71,13 @@ if(h.status==="Pendente" || h.status==="Paga"){
         tr.innerHTML = `
           <td>${h.id}</td>
           <td>${h.hospede ? h.hospede.nome : ''}</td>
-          <td>${h.quarto ? h.quarto.numero : ''}</td>
-          <td>${h.dataEntrada ? h.dataEntrada.replace('T', ' ') : ''}</td>
-          <td>${h.dataSaida ? h.dataSaida.replace('T', ' ') : ''}</td>
+          <td><strong>${h.quarto ? h.quarto.numero : ''}</strong></td>
+          <td>${formatarDataBrasil(h.dataEntrada)}</td>
+          <td>${formatarDataBrasil(h.dataSaida)}</td>
           <td>${h.tipoHospedagem}</td>
-          <td>${h.valorTotal},00 R$</td>
+          <td>${formatarReal(h.valorTotal)}</td>
           <td>${h.quarto ? h.quarto.status : ''}</td>
-          <td class="stthosp">${h.status ? h.status : ''}</td>
+          <td ><strong><p class="stthosp">${h.status ? h.status : ''}</p></strong></td>
           <td>
             <button onclick="editarHospedagem(${h.id})">Editar</button>
             <button onclick="excluirHospedagem(${h.id})">Excluir</button>
@@ -63,11 +88,17 @@ if(h.status==="Pendente" || h.status==="Paga"){
         const statusTd = tr.querySelector(".stthosp");
 
         if (h.status === "Pendente") {
-          statusTd.style.backgroundColor = "#f700044d";
+          statusTd.style.backgroundColor = "#f76062ff";
           statusTd.style.color = "white";
+           statusTd.style.borderRadius = "8px";
+           statusTd.style.border = "1px solid #ffffffff";
+
         } else if (h.status === "Paga") {
-          statusTd.style.backgroundColor = "#98f7004d";
-          statusTd.style.color = "black";
+          statusTd.style.backgroundColor = "#0de9449f";
+          statusTd.style.color = "white";
+          statusTd.style.borderRadius = "8px";
+          statusTd.style.border = "1px solid #ffffffff";
+
         } else {
           statusTd.style.backgroundColor = ""; // cor padrão
         }

@@ -128,6 +128,9 @@ thead {
 th, td {
   padding: 12px 15px;
   text-align: center;
+  font-size: 12px;
+  font-style: oblique;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 tr:nth-child(even) {
@@ -285,6 +288,19 @@ td {
   font-size: 15px;
   left: 3px;
   top: -1px;
+}
+
+.btnVoltar, .btnHistorico {
+  padding: 8px 14px;
+  background: #0055aa;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btnVoltar:hover, .btnHistorico:hover {
+  background: #003f7d;
 }
 
 
