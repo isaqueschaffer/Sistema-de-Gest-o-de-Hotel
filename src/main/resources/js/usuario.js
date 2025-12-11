@@ -1,3 +1,10 @@
+/*let usuarioLogado = sessionStorage.getItem("usuarioLogado");
+
+
+if (!usuarioLogado) {
+    window.location.href = "login.html"; // impede acesso sem login
+}*/
+
 const API = "http://localhost:8080/usuarios";
 
 /* LISTAR TODOS */
@@ -106,3 +113,16 @@ async function deletar(id) {
         carregarUsuarios();
     }
 }
+
+document.getElementById('cpf').addEventListener('input', function () {
+    let value = this.value.replace(/\D/g, ''); // Remove tudo que não é número
+
+    if (value.length > 11) value = value.slice(0, 11); // Limita a 11 dígitos
+
+    // Adiciona pontuação do CPF
+    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+    this.value = value;
+});

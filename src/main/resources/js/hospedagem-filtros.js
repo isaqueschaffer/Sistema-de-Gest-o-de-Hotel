@@ -1,3 +1,9 @@
+let usuarioLogado = sessionStorage.getItem("usuarioLogado");
+
+
+if (!usuarioLogado) {
+    window.location.href = "login.html"; // impede acesso sem login
+}
 const form = document.getElementById("filtrosForm");
 const tabela = document.getElementById("tabelaResultados");
 

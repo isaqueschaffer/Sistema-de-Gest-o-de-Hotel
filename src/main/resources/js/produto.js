@@ -1,3 +1,10 @@
+let usuarioLogado = sessionStorage.getItem("usuarioLogado");
+
+
+if (!usuarioLogado) {
+    window.location.href = "login.html"; // impede acesso sem login
+}
+
 const API_URL = 'http://localhost:8080/produtos';
 
 let modoEdicao = false;
