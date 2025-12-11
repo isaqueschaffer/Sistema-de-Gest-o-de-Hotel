@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Vendas - Hotel Guanabara</title>
+    <link rel="stylesheet" href="css/venda.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>💰 Sistema de Vendas - Hotel Guanabara</h1>
+        <span id="usuarioLogado"></span>
+    </header>
+
+    <section class="card">
+
+        <h2>Registrar Venda</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label>Código do Produto</label>
+                <input type="number" id="codigoProduto" placeholder="Ex: 101">
+                <button onclick="buscarProduto()">Buscar</button>
+            </div>
+
+            <div>
+                <label>Produto</label>
+                <input type="text" id="nomeProduto" disabled>
+            </div>
+
+            <div>
+                <label>Preço Unitário (R$)</label>
+                <input type="number" id="precoUnitario" disabled>
+            </div>
+
+            <div>
+                <label>Quantidade</label>
+                <input type="number" id="quantidade" min="1" value="1" oninput="calcularValores()">
+            </div>
+
+            <div>
+                <label>Total (R$)</label>
+                <input type="number" id="valorTotal" disabled>
+            </div>
+
+            <div>
+                <label>Valor Recebido (R$)</label>
+                <input type="number" id="valorRecebido" oninput="calcularValores()">
+            </div>
+
+            <div>
+                <label>Diferença</label>
+                <input type="number" id="valorDiferenca" disabled>
+            </div>
+
+            <div>
+                <label>Forma de Pagamento</label>
+                <select id="formaPagamento">
+                    <option>Dinheiro</option>
+                    <option>PIX</option>
+                    <option>Cartão</option>
+                    <option>Fiado</option>
+                </select>
+            </div>
+
+            <div id="motivoDiferencaBox" style="display:none;">
+                <label>Motivo da diferença:</label>
+                <input type="text" id="motivoDiferenca">
+            </div>
+
+        </div>
+
+        <button class="btn" onclick="registrarVenda()">Registrar Venda</button>
+
+    </section>
+
+    <section class="card">
+        <h2>Vendas Recentes</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Qtd</th>
+                <th>Total</th>
+                <th>Vendedor</th>
+                <th>Data</th>
+            </tr>
+            </thead>
+            <tbody id="tabelaVendas"></tbody>
+        </table>
+    </section>
+
+</div>
+
+<script src="js/venda.js"></script>
+</body>
+</html>

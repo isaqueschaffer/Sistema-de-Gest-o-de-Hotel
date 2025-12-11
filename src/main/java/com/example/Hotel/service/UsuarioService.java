@@ -2,12 +2,9 @@ package com.example.Hotel.service;
 
 import com.example.Hotel.model.Usuario;
 import com.example.Hotel.dto.UsuarioRequest;
-import com.example.Hotel.model.Perfil;
+
 import com.example.Hotel.repository.UsuarioRepository;
-
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

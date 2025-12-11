@@ -67,4 +67,6 @@ public interface VendaRepository extends JpaRepository<Venda, Long> {
     @Query("SELECT v FROM Venda v WHERE v.motivoDiferenca IS NOT NULL AND v.motivoDiferenca <> ''")
     List<Venda> findVendasComMotivo();
 
+    List<Venda> findByCriadoPorId(Long usuarioId);
+
 }

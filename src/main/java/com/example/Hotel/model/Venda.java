@@ -19,6 +19,10 @@ public class Venda {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario criadoPor;
+
     private int quantidade;
 
     private Double valorUnitario;     // valor do produto
