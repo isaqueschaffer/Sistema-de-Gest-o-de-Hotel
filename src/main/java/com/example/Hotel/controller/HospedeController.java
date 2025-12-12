@@ -32,13 +32,18 @@ public class HospedeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Hospede> atualizar(@PathVariable Long id, @RequestBody Hospede hospede) {
-        if (!hospedeService.buscarPorId(id).isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-     
-        return ResponseEntity.ok(hospedeService.salvar(hospede));
+public ResponseEntity<Hospede> atualizar(@PathVariable Long id, @RequestBody Hospede hospede) {
+    Optional<Hospede> existe = hospedeService.buscarPorId(id);
+
+    if (existe.isEmpty()) {
+        return ResponseEntity.notFound().build();
     }
+
+    hospede.setId(id); // Garante que atualiza o correto
+
+    return ResponseEntity.ok(hospedeService.salvar(hospede));
+}
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {

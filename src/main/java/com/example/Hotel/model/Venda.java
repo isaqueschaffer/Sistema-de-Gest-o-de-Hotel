@@ -48,6 +48,8 @@ public class Venda {
             this.valorDiferenca = 0.0;
         }
 
+       produto.setQuantidade(produto.getQuantidade()-this.quantidade); 
+
         this.dataHora = LocalDateTime.now();
     }
 

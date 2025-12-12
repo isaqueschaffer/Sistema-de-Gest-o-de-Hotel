@@ -10,54 +10,87 @@
 
 <div class="container">
 
-    <header>
+    <a href="index.html">Voltar</a>
+
+    <header class="topo">
         <h1>💰 Sistema de Vendas - Hotel Guanabara</h1>
         <span id="usuarioLogado"></span>
     </header>
 
-    <section class="card">
+    <section class="card moderno">
 
-        <h2>Registrar Venda</h2>
+        <h2 class="titulo">Registrar Venda</h2>
 
-        <div class="form-grid">
-
-            <div>
-                <label>Código do Produto</label>
-                <input type="number" id="codigoProduto" placeholder="Ex: 101">
-                <button onclick="buscarProduto()">Buscar</button>
+        <!-- Catálogo Moderno -->
+        <div class="catalogo">
+            <div class="item" onclick="selecionarProduto(1)">
+                <img src="img/coca.png" alt="Coca">
+                <span>Refrigerante (1)</span>
             </div>
 
-            <div>
+            <div class="item" onclick="selecionarProduto(2)">
+                <img src="img/agua1l.png" alt="Água 1L">
+                <span>Água 1,5 L (2)</span>
+            </div>
+
+            <div class="item" onclick="selecionarProduto(3)">
+                <img src="img/agua200.png" alt="Água 200ml">
+                <span>Água 200ml (3)</span>
+            </div>
+
+            <div class="item" onclick="selecionarProduto(4)">
+                <img src="img/cerveja.png" alt="Cerveja">
+                <span>Cerveja (4)</span>
+            </div>
+
+            <div class="item" onclick="selecionarProduto(5)">
+                <img src="img/aguagas.png" alt="Agua gás">
+                <span>Água c/ gás (5)</span>
+            </div>
+        </div>
+
+        <!-- Formulário -->
+        <div class="form-grid">
+
+           <div class="campo">
+                <label>Código do Produto</label>
+                <div class="fila">
+                    <input type="number" id="codigoProduto" placeholder="Ex: 101">
+                    <button class="btnBuscar" onclick="buscarProduto()">Buscar</button>
+                </div>
+            </div>
+
+            <div class="campo">
                 <label>Produto</label>
                 <input type="text" id="nomeProduto" disabled>
             </div>
 
-            <div>
+            <div class="campo">
                 <label>Preço Unitário (R$)</label>
                 <input type="number" id="precoUnitario" disabled>
             </div>
 
-            <div>
+            <div class="campo">
                 <label>Quantidade</label>
                 <input type="number" id="quantidade" min="1" value="1" oninput="calcularValores()">
             </div>
 
-            <div>
+            <div class="campo">
                 <label>Total (R$)</label>
                 <input type="number" id="valorTotal" disabled>
             </div>
 
-            <div>
-                <label>Valor Recebido (R$)</label>
+            <div class="campo">
+                <label>Valor Recebido</label>
                 <input type="number" id="valorRecebido" oninput="calcularValores()">
             </div>
 
-            <div>
+            <div class="campo">
                 <label>Diferença</label>
                 <input type="number" id="valorDiferenca" disabled>
             </div>
 
-            <div>
+            <div class="campo">
                 <label>Forma de Pagamento</label>
                 <select id="formaPagamento">
                     <option>Dinheiro</option>
@@ -67,26 +100,27 @@
                 </select>
             </div>
 
-            <div id="motivoDiferencaBox" style="display:none;">
+            <div class="campo" id="motivoDiferencaBox" style="display:none;">
                 <label>Motivo da diferença:</label>
                 <input type="text" id="motivoDiferenca">
             </div>
 
         </div>
 
-        <button class="btn" onclick="registrarVenda()">Registrar Venda</button>
+        <button class="btnRegistrar" onclick="registrarVenda()">Registrar Venda</button>
 
     </section>
 
-    <section class="card">
-        <h2>Vendas Recentes</h2>
-        <table>
+    <section class="card moderno">
+        <h3 id="totall"></h3>
+        <h2 class="titulo">Vendas Recentes</h2>
+        <table class="tabelaModern">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Produto</th>
                 <th>Qtd</th>
+                <th>Produto</th>
                 <th>Total</th>
+                <th>Pagamento</th>
                 <th>Vendedor</th>
                 <th>Data</th>
             </tr>

@@ -37,7 +37,10 @@ async function buscarProduto() {
 
     const produto = await resp.json();
 
+    document.getElementById("nomeProduto").style.fontWeight =  "bold";
+    document.getElementById("nomeProduto").style.color =  "white";
     document.getElementById("nomeProduto").value = produto.nome;
+    
     document.getElementById("precoUnitario").value = produto.precoUnitario;
 
     calcularValores();
@@ -113,17 +116,38 @@ async function carregarVendas() {
     lista.forEach(v => {
         html += `
         <tr>
-            <td>${v.id}</td>
-            <td>${v.produto.nome}</td>
             <td>${v.quantidade}</td>
+            <td>${v.produto.nome}</td>
             <td>R$ ${v.valorRecebido.toFixed(2)}</td>
+            <td>${v.formaPagamento}</td>
             <td>${v.criadoPor ? v.criadoPor.nome : "-"}</td>
-            <td>${v.dataHora.replace("T", " ")}</td>
+            <td>${formatarDataBrasil(v.dataHora )}</td>
         </tr>`;
     });
 
     document.getElementById("tabelaVendas").innerHTML = html;
 }
+
+//função para formatar data no padrão brasileiro
+      function formatarDataBrasil(dataISO) {
+  if (!dataISO) return "";
+
+  const data = new Date(dataISO);
+  return data.toLocaleString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+function selecionarProduto(codigo) {
+    document.getElementById("codigoProduto").value = codigo;
+    buscarProduto(); 
+}
+
+
 
 
 

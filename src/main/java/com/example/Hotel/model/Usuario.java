@@ -22,7 +22,7 @@ public class Usuario {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, unique = true, length = 11)
+    @Column(nullable = false, unique = true, length = 14)
     private String cpf;
 
     @Enumerated(EnumType.STRING)
